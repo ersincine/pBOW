@@ -17,12 +17,12 @@ query_set = 4 # one of {1,2,3,4}
 # ---------------------------------------------------------------------
 
 # load database information
-print "--- loading database images ---"
+print ("--- loading database images ---")
 (image_names, image_descriptors, image_keypoints) = \
     load_data('database', 'bottles')
 
 # load query information
-print "---- loading query images ----"
+print ("---- loading query images ----")
 (q_ids, q_descriptors, q_kps) = load_data('query',
                                           'bottles',
                                           query_set)

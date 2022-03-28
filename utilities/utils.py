@@ -17,7 +17,7 @@ def load_data(im_type, dataset='bottles', q=1):
         descriptors_file = 'q{}_descriptors.json'.format(q)
         keypoints_file = 'q{}_keypoints.json'.format(q)
     else:
-        print "im_type must be one of 'database' or 'query'"
+        print ("im_type must be one of 'database' or 'query'")
     with open('data/' + dataset + '/' + image_names_file, 'r') as f:
         image_names = json.load(f)
     with open('data/' + dataset + '/' + descriptors_file, 'r') as f:

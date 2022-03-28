@@ -79,8 +79,8 @@ class Matcher(object):
         """
         bow_list, bow_time = self.bow_score(q_des, q_kp, m)
         gv_list, gv_time = self.geometric_reranking(bow_list, q_des, q_kp)
-        print "BOW: " + str(bow_time)
-        print "GV : " + str(gv_time)
+        print ("BOW: " + str(bow_time))
+        print ("GV : " + str(gv_time))
         return gv_list[0:r], bow_time, gv_time
 
     def bow_score(self, q_des, q_kp, m):
@@ -124,7 +124,7 @@ class Matcher(object):
         """
         assert isinstance(q_id, int)
         if q_id > self.nq or q_id < 0:
-            print "query id out of range"
+            print ("query id out of range")
             return
         q_kp = self.q_kps[q_id-1]
         q_des= self.q_descriptors[q_id-1]

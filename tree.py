@@ -83,7 +83,7 @@ class Tree(object):
             for x in range(0,self.C):
                 childPos = findChild(self.C,i,x)
                 testPT = self.treeArray[childPos].cen
-                if testPT == None:
+                if testPT is None:
                     continue
                 # euclidean distance between child x and pt
                 curDist = np.linalg.norm(testPT - pt)
@@ -151,10 +151,8 @@ class Tree(object):
                 else:
                     scores[ID] += score
         # normalize scores by scaling by norm of db vectors
-        scores = scores.items()
         final_scores = [] # TODO: change this to a heap so it can sort by score
-        for i in range(len(scores)):
-            (ID,score) = scores[i]
+        for ID, score in scores.items():
             nmz_score = float(score) / float(self.dbLengths[ID])
             # TODO: change this to push onto heap so we can auto sort
             final_scores.append((ID, nmz_score))
@@ -178,9 +176,9 @@ def constructTree(C, L, data):
         ... where n is length of feature descriptor
         m is number of features in the database image set
     """
-    print "building tree: C = " + str(C) + ", L = " + str(L)
+    print ("building tree: C = " + str(C) + ", L = " + str(L))
 
-    NUM_NODES = (C**(L+1)-1)/(C-1)
+    NUM_NODES = (C**(L+1)-1)//(C-1)
 
     # initialize tree array with empty nodes
     treeArray = [Node() for i in range(NUM_NODES)]
@@ -204,18 +202,18 @@ def constructTree(C, L, data):
 
         if C <= len(clust.data):
             # on mac (opencv 2.4.5):
-            compactness, label, center = cv2.kmeans(clust.data,
-                                                   C,
-                                                   criteria,
-                                                   10,
-                                                   0)
+            #compactness, label, center = cv2.kmeans(clust.data,
+            #                                       C,
+            #                                       criteria,
+            #                                       10,
+            #                                       0)
             # on CAEN (opencv 3.1.0):
-            #compactness, label, center=cv2.kmeans(clust.data,
-            #                                      C,
-            #                                      None,
-            #                                      criteria,
-            #                                      10,
-            #                                      cv2.KMEANS_RANDOM_CENTERS)
+            compactness, label, center=cv2.kmeans(clust.data,
+                                                  C,
+                                                  None,
+                                                  criteria,
+                                                  10,
+                                                  cv2.KMEANS_RANDOM_CENTERS)
             # custom kmeans implementation:
             #label, center = kmeans(cv2.TERM_CRITERIA_EPS,
             #                       cv2.TERM_CRITERIA_MAX_ITER,
@@ -240,7 +238,7 @@ def constructTree(C, L, data):
                     treeArray[childPos].inverted_index = {}
                     treeArray[childPos].cen = center[x,:]
                     if clust.data.size == 0:
-                        print "ZERO CLUSTER ========="
+                        print ("ZERO CLUSTER =========")
                     NUM_LEAFS += 1
         else:
             # pass down data to first (0th) child; 
@@ -257,5 +255,5 @@ def constructTree(C, L, data):
             else:
                 treeArray[childPos].inverted_index = {}
 
-    print "num leafs: " + str(NUM_LEAFS)
+    print ("num leafs: " + str(NUM_LEAFS))
     return treeArray

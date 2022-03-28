@@ -32,7 +32,7 @@ Use `playground.py` as a configuration file. Here you can set tree parameters `L
 
 Execute the program by entering a python shell and running 
 
-```execfile('playground.py')```.
+```exec(open("playground.py").read())```.
 
 This will execute `playground.py` and save all variables in the interactive shell, including an object called `matcher`, which is an interface to the hierarchical k-means tree. To query the `matcher`, do
 
