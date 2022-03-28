@@ -6,7 +6,7 @@ from build_tree import *
 NUM_QUERIES = 400
 
 # load database information
-print "--- loading database images ---"
+print ("--- loading database images ---")
 with open('big_data/image_names.json','r') as r:
 	# list of database image names
 	image_names = json.load(r)

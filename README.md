@@ -42,11 +42,11 @@ which queries using `images/bottles/query/batch_4/004.jpg`. Information returned
 
 # Requirements
 
-- OpenCV 2.4
+- OpenCV 3+
 
-- Numpy 1.11
+- Numpy
 
-- Python 2.7
+- Python 3
 
 # Authors
 

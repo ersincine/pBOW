@@ -82,7 +82,7 @@ class TestSimpleTree(unittest.TestCase):
         matcher.update_tree(t)
         matcher.add_queries(q_descriptors, q_kps)
         result = matcher.query(4)
-        print result
+        print (result)
         result_im = str(result[0][0][0])
         self.assertEqual(result_im, '004.jpg')
 

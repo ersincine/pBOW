@@ -42,7 +42,7 @@ def drawMatches(img1, kp1, img2, kp2, matches):
 
 	# Place the next image to the right of it
 	out[:rows2,cols1:] = np.dstack([img2, img2, img2])
-	print "draw matches"
+	print ("draw matches")
 	# For each pair of points we have between both images
 	# draw circles, then connect a line between them
 	for mat in matches:
@@ -72,14 +72,14 @@ def drawMatches(img1, kp1, img2, kp2, matches):
 
 
 	# Show the image
-	print "hello"
-	print out.shape
+	print ("hello")
+	print (out.shape)
 	plt.imshow(out)
 	plt.show()
 	#cv2.imshow('Matched Features', out)
-	print "imshow"
+	print ("imshow")
 	#cv2.waitKey(0)
 	#cv2.destroyWindow('Matched Features')
-	print "hello"
+	print ("hello")
 	# Also return the image if you'd like a copy
 	return out

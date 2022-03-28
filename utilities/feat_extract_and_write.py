@@ -47,22 +47,22 @@ if __name__ == "__main__":
         # just get the x,y locations:
         keypoints = [kp.pt for kp in keypoints]
 	
-        print 'Extracting and writing features from: ' + im
+        print ('Extracting and writing features from: ' + im)
 
         n_features = len(keypoints)
 
-        print '- - - extracted ' + str(n_features) + ' features'
+        print ('- - - extracted ' + str(n_features) + ' features')
 
         image_names.append(im)
         image_keypoints.append(keypoints)
         image_descriptors.append(descriptors)	
 
-    print '=== Writing features to files ==='
+    print ('=== Writing features to files ===')
 
     if not out_folder.endswith('/'):
         out_folder += '/'
 
-    print '=== Writing features to json files ==='
+    print ('=== Writing features to json files ===')
 
     with open(out_folder+'image_names.json','w') as w:
         json.dump(image_names, w)

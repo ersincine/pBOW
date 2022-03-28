@@ -16,21 +16,21 @@ if __name__ == "__main__":
     if not folder.endswith('/'):
         folder += '/'
 
-    print "=== reading image names ==="
+    print ("=== reading image names ===")
 	
     with open(folder+'image_names.json','r') as r:
         image_names = json.load(r)
 
-    print "=== reading image keypoints ==="
+    print ("=== reading image keypoints ===")
 
     with open(folder+'keypoints.json','r') as r:
         image_keypoints = json.load(r)
 
-    print "=== reading image descriptors ==="
+    print ("=== reading image descriptors ===")
 
     with open(folder+'descriptors.json','r') as r:
         image_descriptors = json.load(r)
 
-    print image_descriptors[1]
+    print (image_descriptors[1])
 
-    print "~~~~ finished reading ~~~"
+    print ("~~~~ finished reading ~~~")
